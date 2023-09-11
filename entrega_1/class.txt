@@ -1,0 +1,35 @@
+Entrega #1 - Pseudocódigo criação de formas
+
+classe Forma:
+    publica nome
+    publica numero_lados
+    publica cor
+    publica angulos_internos
+
+    // entende-se o metodo criarForma() como o __init__, ou seja, será executado na criação de um instância
+    criarForma(nome, numero_lados, cor, angulos_internos):
+        retorna {
+            nome: nome,
+            numero_lados: numero_lados,
+            cor: cor,
+            angulos_internos: angulos_internos
+        }
+
+    mudarAtributo(nome_forma, titulo_atributo, valor_atributo):
+        // a ideia desse método é alterar qualquer atributo. O uso do "this" aqui é uma mera forma de representar a própria classe, indicando que quer se alterar o atributo que possuí o nome titulo_atributo dentro da classe
+        this.[titulo_atributo] = valor_atributo
+
+
+// criando uma instância da classe com o nome triângulo
+constante triangulo = Forma(
+    'triangulo',
+    3,
+    'azul',
+    45
+)
+
+triangulo.mudarAtributo(
+    'triangulo',
+    'cor',
+    'verde' // alterando o valor do atributo cor para verde
+)
