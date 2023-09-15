@@ -1,0 +1,150 @@
+class Linha {
+    private ponto_inicial;
+    private ponto_final;
+
+    // desenharLinha == __init__
+    desenharLinha(ponto_inicial, ponto_final):
+        this.ponto_inicial = ponto_inicial;
+        this.ponto_final = ponto_final;
+        this.inclinacao_linha ;
+
+        coordenadas = this.calcularCoordenadasIntermediarias()
+
+        // para (coordenada em coordenadas):
+        for coordenada in coordenadas:
+            escreva(".");
+
+    private calcularCoordenadasIntermediarias():
+        // Diferenças nas coordenadas x e y
+        diferenca_x = this.ponto_final.x - this.ponto_inicial.x;
+        diferenca_y = this.ponto_final.y - this.ponto_inicial.y;
+
+        // Número de pontos intermediários com base nas diferenças
+        qtd_pontos_intermediarios = arredondar(diferenca_x)
+
+        // Calcula o passo entre os pontos intermediários
+        passo_x = diferenca_x / qtd_pontos_intermediarios
+        passo_y = diferenca_y / qtd_pontos_intermediarios
+
+        para i em qtd_pontos_intermediarios:
+            x = this.ponto_inicial.x + (i * passo_x);
+            y = this.ponto_inicial.y + (i * passo_y);
+            coordenadas.adiciona({x, y})
+        return coordenadas
+
+    public setInicioLinha(ponto_inicial):
+        this.ponto_inicial = ponto_inicial;
+    
+    public setFimLinha(ponto_final):
+        this.ponto_final = ponto_final;
+
+    public getParCoordenadas(tipo):
+        if (tipo === 'inicioLinha'):
+            return ponto_inicial;
+        if (tipo === 'fimLinha'):
+            return ponto_final;
+
+        return [ponto_inicial, ponto_final]
+}
+
+class Forma {
+    // protected -> pode somente ser acessada pela classe filha e por ela mesma - fora, nao pode
+    protected numero_lados;
+    protected pontos;
+    private linhas = [];
+
+    iniciarForma(numero_lados, pontos):
+        this.numero_lados = numero_lados;
+        this.pontos = pontos;
+
+    protected setPoligono(pontos):
+        para i de 0 ate tamanho(this.numero_lados)
+            ponto_inicial_linha = this.pontos[i]
+            ponto_final_linha = this.pontos[i + 1]
+
+            if(i === tamanho(this.numero_lados)):
+                ponto_final_linha = this.pontos[0]
+
+            linha = Linha(ponto_inicial_linha, ponto_final_linha);
+
+            this.linhas.adiciona(linha); // adiciona == append()
+    
+    public setNumeroLados(numero_lados):
+        this.numero_lados = numero_lados;
+    
+    public getNumeroLados():
+        return this.numero_lados;
+    
+    public getLinhas():
+        return this.linhas;
+}
+
+class Triangulo estende Forma {
+    private tipo;
+    private comprimento_linhas = []
+
+    iniciarTriangulo(pontos):
+        this.pontos = pontos;
+        this.numero_lados = 3;
+    
+    public setTriangulo():
+        se tamanho(this.pontos) !== 3:
+            print("Nao eh possivel definir um triangulo que nao possua 3 lados");
+        senao:
+            this.setPoligono(this.pontos);
+
+    public calcularComprimentoLados():
+        para i de 0 ate tamanho(this.numero_lados)
+            ponto_inicial_linha = this.pontos[i]
+            ponto_final_linha = this.pontos[i + 1]
+
+            if(i === tamanho(this.numero_lados)):
+                ponto_final_linha = this.pontos[0]
+
+            diferenca_x = ponto_final_linha.x - ponto_inicial_linha.x
+            diferenca_y = ponto_final_linha.y - ponto_inicial_linha.y
+
+            comprimento = raiz_quadrada((diferenca_x * diferenca_x) + (diferenca_y * diferenca_y))
+            comprimento_linhas.adicionar(comprimento)
+
+    private setTipo():
+        para cada tamanho em comprimento_linhas:
+            se (tamanho === (tamanho + 1)) E (tamanho === (tamanho + 2)):
+                this.tipo = "equilatero"
+            se (tamanho === (tamanho + 1)) OU (tamanho === (tamanho + 2)) OU ((tamanho + 1) === (tamanho + 2)):
+                this.tipo = "isoceles"
+            
+            // se nenhum dos casos acima, entao:
+            this.tipo = "escaleno"
+    
+    public getTipo(): 
+        se tipo:
+            return this.tipo
+        return "Sem tipo definido, eh necessario setarTipo()"
+}
+
+main():
+    // Desenhar triangulo
+    pontos_triangulo = [
+        {
+            "x": 0,
+            "y": 0
+        },
+        {
+            "x": 3,
+            "y": 3
+        },
+        {
+            "x": 3,
+            "y": 6
+        }
+    ]
+    triangulo = Triangulo(pontos_triangulo)
+    triangulo.setPoligono(pontos_triangulo)
+
+    print(triangulo.getNumeroLados()) // "3"
+    print(triangulo.getTipo()) // "Sem tipo definido, eh necessario setarTipo()"
+    triangulo.setTipo()
+    print(triangulo.getTipo()) // "equilatero"
+
+main()
