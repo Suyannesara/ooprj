@@ -1,4 +1,4 @@
-// 🚀 Está é a versão final para avaliação
+// 🚀 Essa é a versão final para avaliação
 
 // Entrega #1 - Pseudocódigo criação de formas (v.2.0)
 
