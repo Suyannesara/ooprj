@@ -1,3 +1,7 @@
+// 🚀 Está é a versão final para avaliação
+
+// Entrega #1 - Pseudocódigo criação de formas (v.2.0)
+
 class Linha {
     private ponto_inicial;
     private ponto_final;

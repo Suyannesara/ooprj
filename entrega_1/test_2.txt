@@ -1,0 +1,142 @@
+// ⚠ Atenção: O arquivo da versão final do projeto é o ./main.txt, este é um arquivo com uma versão teste do projeto
+
+// Entrega #1 - Pseudocódigo criação de formas (v.1.1)
+
+POO
+- Encapsulamento(non-required)
+- Heranca
+- Polimorfismo
+
+// Alterar os valores das variaveis somente dentro das classes
+// GETTERS and SETTERS
+
+
+
+class Forma {
+    private comprimento;
+    private coordenadas = [(x, y), ()];
+
+    // entende-se o metodo criarForma() como o __init__, ou seja, será executado na criação de um instância
+
+
+    public set definirComprimento(comprimento):
+        this.comprimento = comprimento 
+    
+    public set definirCoordenadas(coordenadas){
+        // coordenadas [[x, y]]
+        this.coordenadas = coordenadas;
+    }
+    
+}
+
+class Plano {
+
+}
+
+class Linha {
+    private pontos = [];
+
+    // desenharLinha == __init__
+    desenharLinha(pontos):
+        this.pontos = pontos;
+
+        coordenadas_intermediarias = this.calcularCoordenadasIntermediarias()
+
+        para (coordenada em coordenadas_intermediarias):
+            escreva(".");
+
+    private calcularCoordenadasIntermediarias():
+        coordenadas_intermediarias = [];
+
+        para cada par (x, y) em this.pontos:
+            // Diferenças nas coordenadas x e y
+            ultimo_ponto = coordenadas_intermediarias[-1]
+            diferenca_x = x - ultimo_ponto.x
+            diferenca_y = y - ultimo_ponto.y
+
+            // Número de pontos intermediários com base nas diferenças
+            qtd_pontos_intermediarios = arredondar(diferenca_x)
+
+            // Calcula o passo entre os pontos intermediários
+            passo_x = diferenca_x / qtd_pontos_intermediarios
+            passo_y = diferenca_y / qtd_pontos_intermediarios
+
+            para i de 1 até qtd_pontos_intermediarios:
+                novo_x = último_ponto.x + (i * passo_x)
+                novo_y = último_ponto.y + (i * passo_y)
+                coordenadas_intermediarias.adicionar({novo_x, novo_y})
+    
+        return coordenadas_intermediarias
+
+    public setPontoLinha(ponto_inicial):
+        this.ponto_inicial = ponto_inicial;
+    
+    public setFimLinha(ponto_final):
+        this.ponto_final = ponto_final;
+
+    public getParCoordenadas(tipo):
+        if (tipo === 'inicioLinha'):
+            return ponto_inicial;
+        if (tipo === 'fimLinha'):
+            return ponto_final;
+
+        return [ponto_inicial, ponto_final]
+}
+
+class Forma {
+    private numero_lados;
+    private linhas = [];
+
+    iniciarForma(numero_lados):
+        this.numero_lados = numero_lados;
+
+    public setPoligono(ponto_inicial, ponto_final):
+        for (lado in this.numero_lados):
+            linha = Linha(ponto_inicial, ponto_final);
+            
+            this.linhas.adiciona(linha); // adiciona == append()
+    
+    public setNumeroLados(numero_lados):
+        this.numero_lados = numero_lados;
+    
+    public getNumeroLados():
+        return this.numero_lados;
+    
+    public getLinhas():
+        return this.linhas;
+}
+
+function main():
+    triangulo = Forma(3)
+    pontos_triangulo = {
+        "ponto_inicial": {
+            "x": 0,
+            "y": 0
+        },
+        "ponto_final": {
+            "x": 5,
+            "y": 3
+        }
+    }
+    triangulo.setPoligono(
+        pontos_triangulo.ponto_inicial,
+        pontos_triangulo.ponto_final
+    )
+
+    retangulo = Forma(4)
+    pontos_triangulo = {
+        "ponto_inicial": {
+            "x": 0,
+            "y": 0
+        },
+        "ponto_final": {
+            "x": 5,
+            "y": 3
+        }
+    }
+    triangulo.setPoligono(
+        pontos_triangulo.ponto_inicial,
+        pontos_triangulo.ponto_final
+    )
+
+
