@@ -52,7 +52,7 @@ class Linha {
 }
 
 class Forma {
-    // protected -> pode somente ser acessada pela classe filha e por ela mesma - fora, nao pode
+    // protected -> pode somente ser acessada pela classe filha e por ela mesma - fora, nao
     protected numero_lados;
     protected pontos;
     private linhas = [];
