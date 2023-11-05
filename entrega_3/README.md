@@ -6,6 +6,7 @@
 - Cria um diagrama de caso de uso em "./casoUsoDiagram"
 - Cria um diagrama de classes em "./classDiagram"
 - Cria um diagrama de objetos em "./objectDiagram"
+- Cria um diagrama de fluxo de dados em "./fluxoDadosDiagram"
 
 ## 🧑🏻‍🔧 Ferramentas
 [X] UML <br>
