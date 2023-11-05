@@ -1,10 +1,11 @@
 ## 🚀 Entrega_3 - Diagramas UML
 
-**Tags**: UML, Diagramas, Classes, Objetos, Atributos...
+**Tags**: UML, Diagramas, Classes, Objetos, Atributos, Fluxo da dados...
 
 ### ✨ Features - O que esse projeto comtempla:
-- Cria um diagrama de caso de uso em "./diagram_caso_uso"
-- Cria um diagrama de classes em "./diagram_classes"
+- Cria um diagrama de caso de uso em "./casoUsoDiagram"
+- Cria um diagrama de classes em "./classDiagram"
+- Cria um diagrama de objetos em "./objectDiagram"
 
 ## 🧑🏻‍🔧 Ferramentas
 [X] UML <br>
